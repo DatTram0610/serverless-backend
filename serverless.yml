@@ -57,31 +57,31 @@ provider:
 
 functions:
   createFaq:
-    handler: faq/create.handler
+    handler: lambda-micro-services/dynamoDB/create.handler
     events:
       - http:
-          path: faq
+          path: dynamodb
           method: post
   getFaq: 
-    handler: faq/get.handler
+    handler: lambda-micro-services/dynamoDB/get.handler
     events: 
       - http:
-          path: faq
+          path: dynamodb
           method: get
   updateFaq: 
-    handler: faq/update.handler
+    handler: lambda-micro-services/dynamoDB/update.handler
     events: 
       - http:
-          path: faq
+          path: dynamodb
           method: put
   deleteFaq: 
-    handler: faq/delete.handler
+    handler: lambda-micro-services/dynamoDB/delete.handler
     events: 
       - http: 
-          path: faq
+          path: dynamodb
           method: delete
   sendMail: 
-    handler: faq/send-mail.handler
+    handler: lambda-micro-services/AWS-SES/send-mail.handler
     events: 
       - http: 
           path: send-email

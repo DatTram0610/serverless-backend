@@ -6,11 +6,8 @@ let ses = new AWS.SES();
 
 
 module.exports.handler = (event, context, callback) => {
-    console.log("Hello");
     let emailParams = {
         Destination: {
-            BccAddresses: ["dattram0610@gmail.com"],
-            CcAddresses: ["dattram0610@gmail.com"],
             ToAddresses: ["dattram0610@gmail.com"]
         },
         Message: {
@@ -25,7 +22,6 @@ module.exports.handler = (event, context, callback) => {
         },
         Source: "davidtram0610@gmail.com"
     };
-    console.log("Hello 1");
     const response = {
         statusCode: 200,
         headers: {
@@ -35,10 +31,8 @@ module.exports.handler = (event, context, callback) => {
             message: "Message sent!"
         })
     };
-    console.log("Hello 2");
 
     ses.sendEmail(emailParams, (error, data) => {
-        console.log("Hello 3");
         if (error) {
             console.log("Error", error.stack);
             callback(error);
