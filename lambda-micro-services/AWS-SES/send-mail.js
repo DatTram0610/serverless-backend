@@ -6,22 +6,36 @@ let ses = new AWS.SES();
 
 
 module.exports.handler = (event, context, callback) => {
+    console.log("Hello event", event);
+    let toAddresses = event.toAddresses;
+    console.log("Hello toAddresses", toAddresses);
+    let textData = event.textData;
+    console.log("textData");
+    console.log("Hello textData", textData);
+    let subjectData = event.subjectData;
+    let sourceEmail = event.sourceEmail;
+
+
+
     let emailParams = {
         Destination: {
-            ToAddresses: ["dattram0610@gmail.com"]
+            ToAddresses: [toAddresses]
         },
         Message: {
             Body: {
                 Text: {
-                    Data: "This is a message test"
+                    Data: textData
                 }
             },
             Subject: {
-                Data: "This is a subject data test"
+                Data: subjectData
             }
         },
-        Source: "davidtram0610@gmail.com"
+        Source: sourceEmail
     };
+
+    console.log(emailParams);
+    
     const response = {
         statusCode: 200,
         headers: {
